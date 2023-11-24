@@ -1,0 +1,9 @@
+<mat-toolbar class="navbar" [class.hide]="isLoginOrRegister">
+  <img src="/assets/logo_p6.png" alt="logo" class="navbar-img"/>
+  <div class="spacer"></div>
+<!--  TODO : à mettre sur les button lorsque le service auth sera fonctionnellle *ngIf="isLoggedIn"-->
+    <button mat-button routerLink="/" *ngIf="!showButton">Articles</button>
+    <button mat-button routerLink="/" *ngIf="!showButton">Thèmes</button>
+    <button mat-button routerLink="/" *ngIf="!showButton"><img src="/assets/user-logo.png" alt=""></button>
+    <button mat-button routerLink="/" *ngIf="showButton"><img src="/assets/menu-burger.png" alt=""></button>
+</mat-toolbar>

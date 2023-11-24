@@ -1,0 +1,27 @@
+<div class="mt-2 ml-2">
+  <div class="cursor-pointer" (click)="goBack()"><img src="assets/arrow-back.png" alt=""></div>
+</div>
+<div class="is-flex is-flex-column is-align-items-center is-justify-content-center">
+  <img class="logo" src="/assets/logo_p6.png" alt="logo" />
+  <h1>Inscription</h1>
+
+  <mat-form-field class="input" appearance="outline">
+    <mat-label>Nom d'utilisateur</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field class="input" appearance="outline">
+    <mat-label>Adresse e-mail</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field class="input" appearance="outline">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">S'incrire</button>
+</div>

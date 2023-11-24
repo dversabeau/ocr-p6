@@ -1,0 +1,17 @@
+.logo{
+  display: none;
+}
+.input{
+  min-width: 250px;
+}
+
+
+@media only screen and (max-width: 650px) {
+  .logo{
+    display: block;
+    width: 250px;
+    height: auto;
+  }
+
+
+}

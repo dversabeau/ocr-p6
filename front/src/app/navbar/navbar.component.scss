@@ -1,0 +1,23 @@
+.navbar{
+  background: white;
+  border-bottom: 1px solid black;
+}
+
+.navbar-img{
+  width: 100px;
+  height: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.hide{
+  display: block;
+}
+
+@media only screen and (max-width: 650px) {
+  .hide{
+    display: none!important;
+  }
+
+}

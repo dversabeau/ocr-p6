@@ -1,0 +1,80 @@
+<div class="is-flex is-flex-column is-align-items-center is-justify-content-center ml-2 mr-2">
+  <div class="is-flex is-justify-content-space-between mt-2 feed-header">
+    <button mat-raised-button color="primary">Créer un article</button>
+    <mat-form-field>
+      <mat-label>Trier par</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let filter of filters" [value]="filter.value">
+          {{ filter.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="post-container">
+    <div class="post">
+      <p class="post-title mb-1">Titre de l'article</p>
+      <div class="mb-1">
+        <span class="mr-3 italic">Le Date</span>
+        <span>par <span class="underline">Auteur</span></span>
+      </div>
+      <div class="post-content">
+        <p>Lorem ipsum</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <p class="post-title mb-1">Titre de l'article</p>
+      <div class="mb-1">
+        <span class="mr-3 italic">Le Date</span>
+        <span>par <span class="underline">Auteur</span></span>
+      </div>
+      <div class="post-content">
+        <p>Lorem ipsum</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <p class="post-title mb-1">Titre de l'article</p>
+      <div class="mb-1">
+        <span class="mr-3 italic">Le Date</span>
+        <span>par <span class="underline">Auteur</span></span>
+      </div>
+      <div class="post-content">
+        <p>Lorem ipsum</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <p class="post-title mb-1">Titre de l'article</p>
+      <div class="mb-1">
+        <span class="mr-3 italic">Le Date</span>
+        <span>par <span class="underline">Auteur</span></span>
+      </div>
+      <div class="post-content">
+        <p>Lorem ipsum</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <p class="post-title mb-1">Titre de l'article</p>
+      <div class="mb-1">
+        <span class="mr-3 italic">Le Date</span>
+        <span>par <span class="underline">Auteur</span></span>
+      </div>
+      <div class="post-content">
+        <p>Lorem ipsum</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <p class="post-title mb-1">Titre de l'article</p>
+      <div class="mb-1">
+        <span class="mr-3 italic">Le Date</span>
+        <span>par <span class="underline">Auteur</span></span>
+      </div>
+      <div class="post-content">
+        <p>Lorem ipsum</p>
+      </div>
+    </div>
+  </div>
+</div>
