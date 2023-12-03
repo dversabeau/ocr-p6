@@ -1,0 +1,24 @@
+.comment-list{
+  width: 100%;
+}
+
+.comment-list-title{
+  font-size: 16px;
+}
+
+.comment-list-container{
+  display: flex;
+  margin-top: 1rem;
+
+  .comment-header{
+    width: 20%;
+    color: rgba(0,0,0,0.5);
+  }
+
+  .comment-body{
+    width: 80%;
+    padding: 1rem;
+    background: rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+  }
+}

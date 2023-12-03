@@ -14,6 +14,13 @@ import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 import {FeedComponent} from "./pages/feed/feed.component";
 import {MatSelectModule} from "@angular/material/select";
+import {PostFormComponent} from "./pages/post/form/post.form.component";
+import {PostDetailsComponent} from "./pages/post/details/post.details.component";
+import {ThemeListComponent} from "./pages/theme/list/theme.list.component";
+import {SubscriptionListComponent} from "./pages/subscription/subscription.list.component";
+import {CommentComponent} from "./pages/post/comment/comment.component";
+import {MeComponent} from "./pages/me/me.component";
+import {CommentListComponent} from "./pages/post/comment/list/comment.list.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +30,13 @@ import {MatSelectModule} from "@angular/material/select";
     RegisterComponent,
     NavbarComponent,
     FeedComponent,
+    PostFormComponent,
+    PostDetailsComponent,
+    ThemeListComponent,
+    SubscriptionListComponent,
+    CommentComponent,
+    MeComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,

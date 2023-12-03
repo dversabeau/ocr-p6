@@ -1,0 +1,24 @@
+.input{
+  min-width: 250px;
+}
+.separator{
+  height: 2px;
+  background: black;
+  width: calc(100% - (5rem) * 2);
+}
+
+.logout-button{
+  margin-top: 1rem;
+  color: #A40F0F;
+  box-shadow: none!important;
+}
+
+@media only screen and (max-width: 650px) {
+  .logo{
+    display: block;
+    width: 250px;
+    height: auto;
+  }
+
+
+}

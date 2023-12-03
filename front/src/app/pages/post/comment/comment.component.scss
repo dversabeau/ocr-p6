@@ -1,0 +1,23 @@
+
+.comment-body {
+  border: 1px solid black; /* Ajoute une bordure de 1 pixel solide avec une couleur grise */
+  border-radius: 8px; /* Ajoute une bordure arrondie */
+  padding: 8px; /* Ajoute un espace intérieur pour un meilleur aspect */
+  background: white;
+  min-height: 75px;
+  margin-top: 1rem;
+  width: 90%;
+}
+
+.send-icon{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  img{
+    cursor: pointer;
+    width: auto;
+    height: 50px;
+  }
+}
