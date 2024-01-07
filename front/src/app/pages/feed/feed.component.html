@@ -11,70 +11,18 @@
     </mat-form-field>
   </div>
   <div class="post-container">
-    <div class="post">
-      <p class="post-title mb-1">Titre de l'article</p>
+    <div *ngFor="let post of (post$ | async)" class="post">
+      <p class="post-title mb-1 cursor-pointer" (click)="postDetails(post.id_post)">{{post.title}}</p>
       <div class="mb-1">
-        <span class="mr-3 italic">Le Date</span>
-        <span>par <span class="underline">Auteur</span></span>
+        <span class="mr-1 italic">Le {{post.created_at | date:'dd/MM/yyyy'}}</span>
+        <span>par <span class="underline">{{post.author}}</span></span>
       </div>
       <div class="post-content">
-        <p>Lorem ipsum</p>
+        <p>{{post.content}}</p>
       </div>
     </div>
-
-    <div class="post">
-      <p class="post-title mb-1">Titre de l'article</p>
-      <div class="mb-1">
-        <span class="mr-3 italic">Le Date</span>
-        <span>par <span class="underline">Auteur</span></span>
-      </div>
-      <div class="post-content">
-        <p>Lorem ipsum</p>
-      </div>
-    </div>
-
-    <div class="post">
-      <p class="post-title mb-1">Titre de l'article</p>
-      <div class="mb-1">
-        <span class="mr-3 italic">Le Date</span>
-        <span>par <span class="underline">Auteur</span></span>
-      </div>
-      <div class="post-content">
-        <p>Lorem ipsum</p>
-      </div>
-    </div>
-
-    <div class="post">
-      <p class="post-title mb-1">Titre de l'article</p>
-      <div class="mb-1">
-        <span class="mr-3 italic">Le Date</span>
-        <span>par <span class="underline">Auteur</span></span>
-      </div>
-      <div class="post-content">
-        <p>Lorem ipsum</p>
-      </div>
-    </div>
-
-    <div class="post">
-      <p class="post-title mb-1">Titre de l'article</p>
-      <div class="mb-1">
-        <span class="mr-3 italic">Le Date</span>
-        <span>par <span class="underline">Auteur</span></span>
-      </div>
-      <div class="post-content">
-        <p>Lorem ipsum</p>
-      </div>
-    </div>
-
-    <div class="post">
-      <p class="post-title mb-1">Titre de l'article</p>
-      <div class="mb-1">
-        <span class="mr-3 italic">Le Date</span>
-        <span>par <span class="underline">Auteur</span></span>
-      </div>
-      <div class="post-content">
-        <p>Lorem ipsum</p>
-      </div>
+    <div *ngIf="(post$ | async)?.length == 0">
+      <p class="italic">Pour afficher des articles vous devez vous abonner à au moins un thème.</p>
     </div>
   </div>
 </div>

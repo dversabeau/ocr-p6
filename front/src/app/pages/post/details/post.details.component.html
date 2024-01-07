@@ -3,20 +3,20 @@
 </div>
 <div class="is-flex is-flex-column is-align-items-center is-justify-content-center">
 
-  <div class="post">
-    <p class="post-title mb-1">Titre de l'article</p>
+  <div *ngIf="post$ | async as post" class="post">
+    <p class="post-title mb-1">{{post.title}}</p>
     <div class="mb-1">
-      <span class="italic">Le Date par Auteur </span><span class="tag">Thèmes</span>
+      <span class="italic">Le {{post.created_at | date:'dd/MM/yyyy'}} par {{post.author}} </span><span class="tag">{{post.topic}}</span>
     </div>
     <div class="post-content">
-      <p>Lorem ipsum</p>
+      <p>{{post.content}}</p>
     </div>
   </div>
 
   <hr class="separator"/>
 </div>
 
-<div class="is-flex is-flex-column ml-5 mr-5 mt-1">
+<div class="comment-list-container">
   <comment-list></comment-list>
 </div>
 

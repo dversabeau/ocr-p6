@@ -1,9 +1,22 @@
-.navbar{
+.pusher{
+  height: 64px;
+  width: 100%;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background: white;
   border-bottom: 1px solid black;
+  z-index: 9999;
 }
 
-.navbar-img{
+.mat-toolbar-row, .mat-toolbar-single-row{
+  height: 64px!important;
+}
+
+.navbar-img {
   width: 100px;
   height: auto;
 }
@@ -11,13 +24,47 @@
 .spacer {
   flex: 1 1 auto;
 }
-.hide{
+
+.hide {
   display: block;
 }
 
+.menu-hidden {
+  height: calc(100vh - 64px);
+  width: 200px;
+  position: fixed;
+  top: 64px;
+  right: 0;
+  z-index: 2;
+  background: white;
+  border: 1px solid black;
+  border-top: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.btn-menu{
+  margin-top: 1rem;
+  font-size: 20px;
+}
+
+.btn-menu-logo{
+margin-bottom: 1rem;
+
+}
+
 @media only screen and (max-width: 650px) {
-  .hide{
-    display: none!important;
+  .hide {
+    display: none !important;
   }
 
 }

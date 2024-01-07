@@ -1,1 +1,15 @@
-Coucou List
+<div class="is-flex is-flex-column is-align-items-center is-justify-content-center mt-1 ml-2 mr-2">
+  <h1>Abonnements</h1>
+  <div class="post-container">
+    <div *ngFor="let theme of (themes$ | async)" class="post">
+      <p class="post-title mb-1">{{theme.title}}</p>
+      <div class="post-content">
+        <p>{{theme.content}}</p>
+      </div>
+      <div class="is-flex is-justify-content-center">
+        <button mat-raised-button (click)="unsubscribe(theme?.id_topic)" color="primary">Se désabonner</button>
+      </div>
+    </div>
+
+  </div>
+</div>

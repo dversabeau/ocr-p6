@@ -1,1 +1,35 @@
-Coucou
+<div class="mt-2 ml-2">
+  <div class="cursor-pointer" (click)="goBack()"><img src="assets/arrow-back.png" alt=""></div>
+</div>
+<div class="is-flex is-flex-column is-align-items-center is-justify-content-center">
+  <div class="post-form">
+
+  <h1>Créer un nouvel article</h1>
+
+    <form class="is-flex is-flex-column is-align-items-center is-justify-content-center" [formGroup]="form"
+          (submit)="createPost()">
+      <mat-form-field class="input" appearance="outline">
+        <mat-label>Sélectionner un thème</mat-label>
+        <mat-select formControlName="selectedTheme" name="selectedTheme" required>
+          <mat-option *ngFor="let theme of themes$ | async" [value]="theme">
+            {{ theme.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input" appearance="outline">
+        <mat-label>Titre de l'article</mat-label>
+        <input matInput formControlName="postTitle" name="postTitle" required>
+      </mat-form-field>
+
+      <mat-form-field class="input" appearance="outline">
+        <mat-label>Contenu de l'article</mat-label>
+        <textarea matInput formControlName="postContent" name="postContent" rows="10" required></textarea>
+      </mat-form-field>
+
+      <span *ngIf="onError" class="error mb-1">An error occurred</span>
+      <button type="submit" class="mt-1" mat-raised-button color="primary">Créer</button>
+    </form>
+
+  </div>
+</div>

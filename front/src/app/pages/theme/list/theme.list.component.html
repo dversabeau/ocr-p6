@@ -1,46 +1,14 @@
 <div class="is-flex is-flex-column is-align-items-center is-justify-content-center ml-2 mr-2">
   <div class="post-container">
-    <div class="post">
-      <p class="post-title mb-1">Titre du thème</p>
+
+    <div *ngFor="let theme of (themes$ | async)" class="post">
+      <p class="post-title mb-1">{{theme.title}}</p>
       <div class="post-content">
-        <p>Lorem ipsum</p>
+        <p>{{theme.content}}</p>
       </div>
       <div class="is-flex is-justify-content-center">
-      <button mat-raised-button color="primary">S'abonner</button>
-
+        <button mat-raised-button (click)="subscribe(theme?.id_topic)" color="primary">S'abonner</button>
       </div>
     </div>
-
-    <div class="post">
-      <p class="post-title mb-1">Titre du thème</p>
-      <div class="post-content">
-        <p>Lorem ipsum</p>
-      </div>
-      <div class="is-flex is-justify-content-center">
-        <button mat-raised-button color="primary">S'abonner</button>
-
-      </div>
-    </div>
-    <div class="post">
-      <p class="post-title mb-1">Titre du thème</p>
-      <div class="post-content">
-        <p>Lorem ipsum</p>
-      </div>
-      <div class="is-flex is-justify-content-center">
-        <button mat-raised-button color="primary">S'abonner</button>
-
-      </div>
-    </div>
-    <div class="post">
-      <p class="post-title mb-1">Titre du thème</p>
-      <div class="post-content">
-        <p>Lorem ipsum</p>
-      </div>
-      <div class="is-flex is-justify-content-center">
-        <button mat-raised-button color="primary">S'abonner</button>
-
-      </div>
-    </div>
-
   </div>
 </div>

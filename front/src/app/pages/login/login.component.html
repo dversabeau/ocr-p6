@@ -2,21 +2,26 @@
   <div class="cursor-pointer" (click)="goBack()"><img src="assets/arrow-back.png" alt=""></div>
 </div>
 <div class="is-flex is-flex-column is-align-items-center is-justify-content-center">
-  <img class="logo" src="/assets/logo_p6.png" alt="logo" />
+  <img class="logo" src="/assets/logo_p6.png" alt="logo"/>
   <h1>Se connecter</h1>
+  <form class="is-flex is-flex-column is-align-items-center is-justify-content-center" [formGroup]="form"
+        (ngSubmit)="submit()">
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Adresse e-mail ou nom d'utilisateur</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
 
-  <mat-form-field class="input" appearance="outline">
-    <mat-label>Adresse e-mail ou nom d'utilisateur</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix  (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <span *ngIf="onError" class="error mb-1">An error occurred</span>
 
-  <mat-form-field class="input" appearance="outline">
-    <mat-label>Mot de passe</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
+    <button mat-raised-button color="primary">Se connecter</button>
+  </form>
 
-  <button mat-raised-button color="primary">Se connecter</button>
 </div>
