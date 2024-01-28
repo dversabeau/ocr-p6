@@ -10,7 +10,6 @@ import {SessionService} from "../services/session.service";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn: boolean = false;
   showButton: boolean = false;
   isLoginOrRegister: boolean = false;
   sidenav: boolean = false;
@@ -23,17 +22,6 @@ export class NavbarComponent implements OnInit {
       .subscribe(result => {
         this.showButton = result.matches;
       });
-    this.isLoggedIn = this.sessionService.isLogged;
-  }
-
-  ngOnInit() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if(event.url === '/register' || event.url === '/login' ){
-          this.isLoginOrRegister = true;
-        }
-      }
-    });
   }
 
   sidenavToggle(){
@@ -42,6 +30,13 @@ export class NavbarComponent implements OnInit {
 
   public goToHome():void {
     this.router.navigate(['/']);
+  }
+
+  isLoggedIn(): boolean {
+    return this.sessionService.isLogged;
+  }
+
+  ngOnInit(): void {
   }
 
 }

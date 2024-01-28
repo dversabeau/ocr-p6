@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,7 +33,7 @@ public class SubscriptionWS {
             Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwtToken).getBody();
             String identification = claims.get("sub", String.class);
 
-            User user = userService.findUserByEmailOrUsername(identification);
+            User user = userService.findUserByEmailOrUsername(identification).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
 
             Subscription subscription = subscriptionService.subscribe(topicId, user.getId());
             if (subscription != null) {
@@ -52,7 +53,7 @@ public class SubscriptionWS {
             Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwtToken).getBody();
             String identification = claims.get("sub", String.class);
 
-            User user = userService.findUserByEmailOrUsername(identification);
+            User user = userService.findUserByEmailOrUsername(identification).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));;
 
             subscriptionService.unsubscribe(topicId, user.getId());
         } catch (Exception e) {

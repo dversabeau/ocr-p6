@@ -8,6 +8,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public class TopicWS {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwtToken).getBody();
         String identification = claims.get("sub", String.class);
 
-        User user = userService.findUserByEmailOrUsername(identification);
+        User user = userService.findUserByEmailOrUsername(identification).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));;
 
         return topicService.getAllThemesNoSubscribed(user.getId());
     }
@@ -48,7 +49,7 @@ public class TopicWS {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwtToken).getBody();
         String identification = claims.get("sub", String.class);
 
-        User user = userService.findUserByEmailOrUsername(identification);
+        User user = userService.findUserByEmailOrUsername(identification).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));;
 
         return topicService.getAllThemesSubscribed(user.getId());
     }

@@ -12,7 +12,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query(value = "SELECT p.* FROM posts AS p\n" +
             "LEFT JOIN subscriptions AS s ON p.topic_id = s.topic_id " +
             "AND s.user_id = :userId \n" +
-            "WHERE s.topic_id IN ( :result )", nativeQuery = true)
+            "WHERE s.topic_id IN ( :result )" +
+            "ORDER BY p.created_at DESC ", nativeQuery = true)
     List<Post> getFeed(@Param("userId") Long userId, @Param("result") List<Long> result);
 
     Post save(Post post);

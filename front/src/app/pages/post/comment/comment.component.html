@@ -1,6 +1,7 @@
-<div class="is-flex">
-  <textarea class="comment-body" matInput placeholder="Écrivez ici votre commentaire"></textarea>
-  <div class="send-icon">
+<form class="is-flex mb-2" [formGroup]="form">
+    <textarea matInput formControlName="commentContent" name="commentContent" class="comment-body"
+              placeholder="Écrivez ici votre commentaire"></textarea>
+  <div (click)="createComment()" class="send-icon">
     <img src="assets/icon-send.png" alt="">
   </div>
-</div>
+</form>

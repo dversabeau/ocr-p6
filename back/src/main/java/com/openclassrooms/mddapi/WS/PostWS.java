@@ -11,6 +11,7 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class PostWS {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwtToken).getBody();
         String identification = claims.get("sub", String.class);
 
-        User user = userService.findUserByEmailOrUsername(identification);
+        User user = userService.findUserByEmailOrUsername(identification).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));;
 
         return postService.getFeed(user.getId());
     }
@@ -51,7 +52,7 @@ public class PostWS {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwtToken).getBody();
         String identification = claims.get("sub", String.class);
 
-        User user = userService.findUserByEmailOrUsername(identification);
+        User user = userService.findUserByEmailOrUsername(identification).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));;
 
         if (user != null) {
             postService.create(user, post);

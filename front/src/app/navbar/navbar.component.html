@@ -2,22 +2,23 @@
 <mat-toolbar class="navbar" [class.hide]="isLoginOrRegister">
   <img (click)="goToHome()" src="/assets/logo_p6.png" alt="logo" class="navbar-img cursor-pointer"/>
   <div class="spacer"></div>
-<!--  TODO : à mettre sur les button lorsque le service auth sera fonctionnellle *ngIf="isLoggedIn"-->
-    <button mat-button routerLink="/feed" *ngIf="!showButton">Articles</button>
-    <button mat-button routerLink="/themes" *ngIf="!showButton">Thèmes</button>
-    <button mat-button routerLink="/me" *ngIf="!showButton"><img src="/assets/user-logo.png" alt=""></button>
+  <div *ngIf="isLoggedIn()">
+    <button mat-button routerLink="/feed" *ngIf="!showButton && isLoggedIn">Articles</button>
+    <button mat-button routerLink="/themes" *ngIf="!showButton && isLoggedIn">Thèmes</button>
+    <button mat-button routerLink="/me" *ngIf="!showButton && isLoggedIn"><img src="/assets/user-logo.png" alt="">
+    </button>
     <button mat-button *ngIf="showButton" (click)="sidenavToggle()"><img src="/assets/menu-burger.png" alt=""></button>
+    <div *ngIf="sidenav" class="menu-hidden">
+      <div class="is-flex is-flex-column is-justify-content-space-between h-100">
+        <div class="is-flex is-flex-column">
+          <a class="btn-menu" mat-button routerLink="/feed">Articles</a>
+          <a class="btn-menu" mat-button routerLink="/themes">Thèmes</a>
+        </div>
 
-  <div *ngIf="sidenav" class="menu-hidden">
-    <div class="is-flex is-flex-column is-justify-content-space-between h-100">
-      <div class="is-flex is-flex-column">
-        <a class="btn-menu" mat-button routerLink="/feed">Articles</a>
-        <a class="btn-menu" mat-button routerLink="/themes">Thèmes</a>
+        <a class="btn-menu-logo" mat-button routerLink="/me"><img src="/assets/user-logo.png" alt=""></a>
       </div>
-
-      <a class="btn-menu-logo" mat-button routerLink="/me"><img src="/assets/user-logo.png" alt=""></a>
     </div>
-
   </div>
+
 </mat-toolbar>
-  <div *ngIf="sidenav" (click)="sidenavToggle()" class="overlay"></div>
+<div *ngIf="sidenav" (click)="sidenavToggle()" class="overlay"></div>

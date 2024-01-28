@@ -15,4 +15,8 @@ export class CommentService{
   public findByPostId(id: string | null): Observable<Comment[]> {
     return this.httpClient.get<Comment[]>(this.pathService + "/post/" + id)
   }
+
+  public createComment(id: string, content: string): Observable<void> {
+    return this.httpClient.post<void>(this.pathService + "/post/" + id, content)
+  }
 }

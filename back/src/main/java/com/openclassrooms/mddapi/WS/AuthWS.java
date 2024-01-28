@@ -19,6 +19,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -83,7 +84,7 @@ public class AuthWS {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwtToken).getBody();
         String identification = claims.get("sub", String.class);
 
-        User user = userService.findUserByEmailOrUsername(identification);
+        User user = userService.findUserByEmailOrUsername(identification).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
 
         user.setEmail(userchange.getEmail());
         user.setUsername(userchange.getUsername());
@@ -98,7 +99,7 @@ public class AuthWS {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwtToken).getBody();
         String identification = claims.get("sub", String.class);
 
-        User user = userService.findUserByEmailOrUsername(identification);
+        User user = userService.findUserByEmailOrUsername(identification).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));;
 
         MeDTO dto = new MeDTO(user.getEmail(), user.getUsername());
         return dto;

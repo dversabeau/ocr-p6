@@ -3,7 +3,7 @@
     <button mat-raised-button color="primary" routerLink="/article">Créer un article</button>
     <mat-form-field>
       <mat-label>Trier par</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="selectedFilter" (ngModelChange)="onFilterChange()">
         <mat-option *ngFor="let filter of filters" [value]="filter.value">
           {{ filter.viewValue }}
         </mat-option>
@@ -11,7 +11,7 @@
     </mat-form-field>
   </div>
   <div class="post-container">
-    <div *ngFor="let post of (post$ | async)" class="post">
+    <div *ngFor="let post of (this.filteredAndSortedPosts$ | async)" class="post">
       <p class="post-title mb-1 cursor-pointer" (click)="postDetails(post.id_post)">{{post.title}}</p>
       <div class="mb-1">
         <span class="mr-1 italic">Le {{post.created_at | date:'dd/MM/yyyy'}}</span>
